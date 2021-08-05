@@ -1,8 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
 
 <head>
 
-<title>TechPlus</title>
+<title TechPlus></title>
 <!-- CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -16,7 +17,7 @@
 	<header>
 		<nav class="navbar navbar-light bg-light">
 			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">
-				<h4>MyTechPlus</h4>
+				 MyTechPlus
 			</span>
 		</nav>
 	</header>
@@ -32,8 +33,17 @@
 			</nav>
 
 			<div class="card shadow-sm bg-white rounded"
-				style="margin-top: 20px;">
-				<div class="card-body">teste</div>
+				style="margin-top: 20px;" th:each="post : ${posts}">
+				<div class="card-body">
+					<p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+						<span th:text="${post.autor}"></span>
+						<span th:text="${post.data}"></span>
+					</p>
+					<a href="#"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span> </h4></a>
+					
+					<p class="card-text"><span th:utext="${#strings.abbreviate(post.texto, 400)}"></span> </p>
+				
+				</div>
 			</div>
 
 		</div>
